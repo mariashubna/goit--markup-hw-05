@@ -419,7 +419,7 @@ a {
   background-color: var(--modal-overlay-color);
   position: fixed;
   top: 0;
-  left: 0;
+  left: 0; 
   width: 100%;
   height: 100%;
   z-index: 999;
@@ -428,27 +428,32 @@ a {
   align-items: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-overlay.is-open {
   opacity: 1;
   pointer-events: auto;
 }
 .modal {
+  position: absolute;
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%) scale(1);
   background-color: var(--modal-background-color);
   overflow-y: auto;
   border-radius: 4px;
   width: 408px;
-  height: auto;
+  min-height: 584px;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12),
     0 2px 1px 0 rgba(0, 0, 0, 0.2);
   padding: 72px 24px 24px;
-  position: relative;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-closed-btn {
   background-color: var(--accent-color);
-  border-radius: 100%;
+  border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -460,6 +465,7 @@ a {
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .closed-btn {
+  border: none;
   fill: var(--dark-color);
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -485,6 +491,7 @@ a {
   margin-bottom: 8px;
 }
 .input-label {
+  display: block; 
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.04em;
@@ -507,8 +514,9 @@ a {
 .input-icon {
   fill: var(--dark-color);
   left: 16px;
+  top: 50%; 
+  transform: translateY(-50%); 
   position: absolute;
-  top: 8px;
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-input:hover,
@@ -585,7 +593,7 @@ a {
   background: var(--primary-brand-color);
   border-radius: 4px;
   padding: 16px 32px;
-  width: 169px;
+  min-width: 169px;
   height: 56px;
   margin: 0 auto;
   border: none;
@@ -611,6 +619,7 @@ a {
 }
 .send-form {
   display: flex;
+  gap: 24px;
 }
 .send-label {
   
@@ -622,16 +631,15 @@ a {
   height: 40px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
   background-color: transparent;
-  padding: 8px 16px;
-  margin-right: 24px;
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.send-input::placeholder {
-  color: inherit;
   font-size: 12px;
   line-height: 2;
   letter-spacing: 0.04em;
   color: var(--white-color);
+  padding: 8px 16px;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.send-input::placeholder {
+  color: inherit; 
 }
 
 .send-input:hover,
